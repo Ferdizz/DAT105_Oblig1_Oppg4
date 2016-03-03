@@ -26,16 +26,17 @@ public:
     Fraction* operator*(Fraction target);
     Fraction* operator/(Fraction target);
 
-    Fraction* operator==(Fraction target);
-    Fraction* operator!=(Fraction target);
-    Fraction* operator<(Fraction target);
-    Fraction* operator>(Fraction target);
-    Fraction* operator<=(Fraction target);
-    Fraction* operator>=(Fraction target);
+    bool operator==(Fraction target);
+    bool operator!=(Fraction target);
+    bool operator<(Fraction target);
+    bool operator>(Fraction target);
+    bool operator<=(Fraction target);
+    bool operator>=(Fraction target);
+
+    friend ostream &operator<<(ostream &output, Fraction &f);
+    friend istream &operator>>(istream &input, Fraction &f);
 
     operator float();
-
-    string toString();
 
 };
 

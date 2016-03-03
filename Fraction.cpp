@@ -3,6 +3,7 @@
 //
 
 #include <sstream>
+#include <iostream>
 #include "Fraction.h"
 
 Fraction::Fraction() {
@@ -31,12 +32,50 @@ Fraction *Fraction::operator/(Fraction target) {
     return new Fraction(this->num*target.denom, this->denom*target.num);
 }
 
-Fraction::operator float() {
-    return (num / denom);
+
+bool Fraction::operator==(Fraction target) {
+    return (float) *this == (float) target;
 }
 
-string Fraction::toString() {
-    ostringstream s;
-    s << num << "/" << denom;
-    return s.str();
+bool Fraction::operator!=(Fraction target) {
+    return (float) *this != (float) target;
+}
+
+bool Fraction::operator<(Fraction target) {
+    return (float) *this < (float) target;
+}
+
+bool Fraction::operator>(Fraction target) {
+    return (float) *this > (float) target;
+}
+
+bool Fraction::operator<=(Fraction target) {
+    return (float) *this <= (float) target;
+}
+
+bool Fraction::operator>=(Fraction target) {
+    return (float) *this >= (float) target;
+}
+
+ostream& operator<<(ostream &output, Fraction &f) {
+    output << f.num << "/" << f.denom;
+    return output;
+}
+
+istream& operator>>(istream &input, Fraction &f) {
+    double num, denom;
+
+    cout << "Enter numerator: ";
+    cin >> num;
+    cout << "Enter denominator: ";
+    cin >> denom;
+
+    f.num = num;
+    f.denom = denom;
+
+    return input;
+}
+
+Fraction::operator float() {
+    return (num / denom);
 }
