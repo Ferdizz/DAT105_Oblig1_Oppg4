@@ -77,5 +77,8 @@ istream& operator>>(istream &input, Fraction &f) {
 }
 
 Fraction::operator float() {
+    if(denom == 0){
+        throw overflow_error("ERROR - Divide by zero attempted!");
+    }
     return (num / denom);
 }
